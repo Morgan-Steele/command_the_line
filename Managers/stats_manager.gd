@@ -89,6 +89,8 @@ func select():#returns selected ability
 #func use_ability (combines obey, select, succeed)
 func use_ability(sel_ability):
 	var ability
+	# Temporary hardcode to run
+	var succeed = true
 	if obey(sel_ability):
 		ability=sel_ability
 	else:

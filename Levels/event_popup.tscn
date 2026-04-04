@@ -7,29 +7,43 @@ process_mode = 3
 script = ExtResource("1_ddtug")
 
 [node name="Panel" type="Panel" parent="." unique_id=1971561245]
-offset_right = 383.0
-offset_bottom = 193.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -300.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Label" type="Label" parent="." unique_id=2046841046]
-offset_left = 64.0
-offset_top = 15.0
-offset_right = 294.0
-offset_bottom = 77.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1507300694]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
 
-[node name="CloseButton" type="Button" parent="." unique_id=209727774]
-offset_left = 167.0
-offset_top = 140.0
-offset_right = 182.0
-offset_bottom = 157.0
+[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=2046841046]
+layout_mode = 2
+size_flags_vertical = 6
+theme_type_variation = &"HeaderMedium"
+autowrap_mode = 2
 
-[node name="Choice1Button" type="Button" parent="." unique_id=905050038]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="CloseButton" type="Button" parent="Panel/VBoxContainer" unique_id=209727774]
+layout_mode = 2
 
-[node name="Choice2Button" type="Button" parent="." unique_id=1119469500]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="Choice1Button" type="Button" parent="Panel/VBoxContainer" unique_id=905050038]
+layout_mode = 2
+size_flags_vertical = 3
 
-[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
-[connection signal="pressed" from="Choice1Button" to="." method="_on_choice_1_button_pressed"]
-[connection signal="pressed" from="Choice2Button" to="." method="_on_choice_2_button_pressed"]
+[node name="Choice2Button" type="Button" parent="Panel/VBoxContainer" unique_id=1119469500]
+layout_mode = 2
+
+[connection signal="pressed" from="Panel/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Choice1Button" to="." method="_on_choice_1_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Choice2Button" to="." method="_on_choice_2_button_pressed"]

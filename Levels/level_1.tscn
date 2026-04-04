@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://bllxvslknralp" path="res://Sprites/player.tscn" id="1_rf6l5"]
 [ext_resource type="Texture2D" uid="uid://bdh8icav1d41u" path="res://Levels/tilesheet_complete.png" id="2_syshm"]
 [ext_resource type="Script" uid="uid://batggonssxop1" path="res://Levels/area_2d.gd" id="3_rfktq"]
-[ext_resource type="Script" uid="uid://db27cird2r6hf" path="res://Levels/event_trigger.gd" id="4_0urlm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hn12h"]
 texture = ExtResource("2_syshm")
@@ -309,9 +308,6 @@ sources/1 = SubResource("TileSetAtlasSource_hn12h")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hn12h"]
 size = Vector2(14.5, 50)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rka8t"]
-size = Vector2(26, 34.5)
-
 [node name="level1" type="Node2D" unique_id=154210673]
 
 [node name="Player" parent="." unique_id=202545245 instance=ExtResource("1_rf6l5")]
@@ -327,13 +323,4 @@ script = ExtResource("3_rfktq")
 position = Vector2(1154.75, 30)
 shape = SubResource("RectangleShape2D_hn12h")
 
-[node name="EventTrigger" type="Area2D" parent="." unique_id=763455060]
-position = Vector2(77, 0)
-script = ExtResource("4_0urlm")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EventTrigger" unique_id=1086067194]
-position = Vector2(142, 34)
-shape = SubResource("RectangleShape2D_rka8t")
-
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
-[connection signal="body_entered" from="EventTrigger" to="EventTrigger" method="_on_body_entered"]
