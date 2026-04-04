@@ -4,9 +4,6 @@ enum Pattern {solid, dash, dotted, bold}
 enum Topper {none, ball, arrow, diamond}
 enum Colour {black, red, green, blue}
 
-var requests #int
-var denied #int
-
 #line stats
 var colour #enum (black, red, green, blue)
 var pattern #enum (solid, dashed, dotted, bold)
@@ -20,10 +17,7 @@ var health #unsigned int
 
 var abilities = []
 
-func _ready():
-	requests=0
-	denied=0
-	
+func initialize():
 	health=100
 	coins=0
 	affection=20
@@ -91,21 +85,20 @@ func select():#returns selected ability
 #enemy's paired stat: block-force dodge-speed attack?
 #skill of ability
 
-#How much damage the player takes from the enemy
-func take_damage(attack):
-	health -= attack
 
 #func use_ability (combines obey, select, succeed)
 func use_ability(sel_ability):
 	var ability
-	# Temporary hardcode to run
-	var succeed = true
 	if obey(sel_ability):
 		ability=sel_ability
 	else:
 		ability=select()
 	if(succeed):
 		ability.use
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
