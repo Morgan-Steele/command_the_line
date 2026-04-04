@@ -1,8 +1,12 @@
 extends Node
+#enums
+enum Texture {solid, dash, dotted, bold}
+enum Topper {none, ball, arrow diamond}
+
 #line stats
 var color
 var texture #enum (solid, dashed, dotted, bold)
-var end #enum (none, ball, arrow, diamond)
+var topper #enum (none, ball, arrow, diamond)
 var affection #int 0-100
 var obedience #int 0-100
 	
@@ -13,6 +17,10 @@ var health #unsigned int
 abilities=[]
 
 func initialize():
+	health=100
+	coins=0
+	affection=20
+	obedience=20
 	
 
 func train_ability(Ability ability, int cost):
