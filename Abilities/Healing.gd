@@ -1,15 +1,15 @@
 extends Ability
-class_name Healing
+class_name Healing 
 var base_heal
-func _init(t_name,t_skill,t_aptitude,t_like, bheal=skill/5):
+var luck
+
+func _init(t_name,t_skill,t_aptitude,t_like, bheal=skill/5, lucky=20):
 	super._init(t_name,t_skill,t_aptitude,t_like)
 	base_heal=bheal
-	
-func use(health):
-	health += base_heal
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+	luck=lucky
+func use(enemy):
+	StatsManager.health += base_heal + randi_range(0, luck)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
