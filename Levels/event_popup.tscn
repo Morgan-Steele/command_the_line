@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bcjcvv4lg3c7q" path="res://Levels/canvas_layer.gd" id="1_ddtug"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_ddtug"]
+
 [node name="EventPopup" type="CanvasLayer" unique_id=2071342294]
 process_mode = 3
 script = ExtResource("1_ddtug")
@@ -29,19 +31,25 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=2046841046]
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_vertical = 6
 theme_type_variation = &"HeaderMedium"
+label_settings = SubResource("LabelSettings_ddtug")
+horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="CloseButton" type="Button" parent="Panel/VBoxContainer" unique_id=209727774]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="Choice1Button" type="Button" parent="Panel/VBoxContainer" unique_id=905050038]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-size_flags_vertical = 3
+icon_alignment = 1
 
 [node name="Choice2Button" type="Button" parent="Panel/VBoxContainer" unique_id=1119469500]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [connection signal="pressed" from="Panel/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
