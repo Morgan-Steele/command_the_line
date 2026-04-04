@@ -1,0 +1,10 @@
+# Godot 4+
+.godot/
+/android/
+
+# Generated files
+*.translation
+
+# OS files
+.DS_Store
+Thumbs.db
