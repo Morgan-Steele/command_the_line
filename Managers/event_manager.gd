@@ -92,7 +92,7 @@ func event_found_coins():
 	
 func event_request_money():
 	StatsManager.requested_coins=randi_range(1,StatsManager.coins)	
-	trigger_popup("event_request_money", "Your Line asked for " +StatsManager.requested_coins+" money", ["Give money", "Refuse"])
+	trigger_popup("event_request_money", "Your Line asked for " +str(StatsManager.requested_coins)+" money", ["Give money", "Refuse"])
 
 func event_request_color():
 	StatsManager.requested_color = randi_range(0,3)
@@ -107,4 +107,3 @@ func event_zero_affection():
 func event_total_obedience():
 	trigger_popup("event_total_obedience", "Your Line has been overly disiplined and goes through a rebellious phase")
 	StatsManager.obedience=20
-	
