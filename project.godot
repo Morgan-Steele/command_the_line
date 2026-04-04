@@ -17,8 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*uid://bcwplmj43tdw6"
-
+EventManager="*uid://bcwplmj43tdw6"
 
 [display]
 

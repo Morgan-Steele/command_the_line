@@ -1,12 +1,12 @@
 [gd_scene format=4 uid="uid://gbxr2njcy7l7"]
 
-[ext_resource type="PackedScene" uid="uid://bllxvslknralp" path="res://player.tscn" id="1_3hls8"]
-[ext_resource type="Texture2D" uid="uid://bdh8icav1d41u" path="res://tilesheet_complete.png" id="2_hbghi"]
-[ext_resource type="Script" uid="uid://batggonssxop1" path="res://area_2d.gd" id="3_hn12h"]
-[ext_resource type="Script" uid="uid://db27cird2r6hf" path="res://event_trigger.gd" id="4_ihfcg"]
+[ext_resource type="PackedScene" uid="uid://bllxvslknralp" path="res://Sprites/player.tscn" id="1_rf6l5"]
+[ext_resource type="Texture2D" uid="uid://bdh8icav1d41u" path="res://Levels/tilesheet_complete.png" id="2_syshm"]
+[ext_resource type="Script" uid="uid://batggonssxop1" path="res://Levels/area_2d.gd" id="3_rfktq"]
+[ext_resource type="Script" uid="uid://db27cird2r6hf" path="res://Levels/event_trigger.gd" id="4_0urlm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hn12h"]
-texture = ExtResource("2_hbghi")
+texture = ExtResource("2_syshm")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -314,14 +314,14 @@ size = Vector2(26, 34.5)
 
 [node name="level1" type="Node2D" unique_id=154210673]
 
-[node name="Player" parent="." unique_id=202545245 instance=ExtResource("1_3hls8")]
+[node name="Player" parent="." unique_id=202545245 instance=ExtResource("1_rf6l5")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1694915542]
 tile_map_data = PackedByteArray("AAAAAAEAAQAGAAUAAAABAAEAAQAGAAUAAAACAAEAAQAGAAUAAAADAAEAAQAGAAUAAAAEAAEAAQAGAAUAAAAFAAEAAQABAAUAAAAFAAAAAQABAAQAAAAGAAAAAQACAAQAAAAGAAEAAQACAAUAAAAHAAEAAQAFAAUAAAAIAAEAAQAFAAUAAAAJAAEAAQAFAAUAAAAKAAEAAQAFAAQAAAALAAEAAQAGAAQAAAAIAP7/AQAHAAQAAAAJAP7/AQAIAAQAAAANAP3/AQAIAAQAAAAMAP3/AQAHAAQAAAALAAIAAQAAAAMAAAAKAAIAAQAAAAMAAAALAAMAAQAAAAMAAAAKAAMAAQAAAAMAAAAJAAIAAQAAAAMAAAAIAAIAAQAAAAMAAAAHAAIAAQAAAAMAAAD//wIAAQAAAAMAAAAAAAIAAQAAAAMAAAABAAIAAQAAAAMAAAACAAIAAQAAAAMAAAADAAIAAQAAAAMAAAAEAAIAAQAAAAMAAAAFAAIAAQAAAAMAAAAGAAIAAQAAAAMAAAAHAAMAAQAAAAMAAAAIAAMAAQAAAAMAAAAJAAMAAQAAAAMAAAAGAAMAAQAAAAMAAAAFAAMAAQAAAAMAAAAEAAMAAQAAAAMAAAADAAMAAQAAAAMAAAACAAMAAQAAAAMAAAABAAMAAQAAAAMAAAAAAAMAAQAAAAMAAAD//wMAAQAAAAMAAAD+/wMAAQAAAAMAAAD+/wIAAQAAAAMAAAD+/wEAAQACAAMAAAD9/wEAAQAAAAMAAAD9/wAAAQAAAAMAAAD9////AQAAAAMAAAD9//7/AQAAAAMAAAD9//3/AQAAAAMAAAD9//z/AQAAAAMAAAD9/wIAAQAAAAMAAAD9/wMAAQAAAAMAAAAMAAIAAQAAAAMAAAANAAIAAQAAAAMAAAAOAAIAAQAAAAMAAAAMAAMAAQAAAAMAAAANAAMAAQAAAAMAAAAOAAMAAQAAAAMAAAAPAAMAAQAAAAMAAAAQAAMAAQAAAAMAAAARAAMAAQAAAAMAAAARAAIAAQAAAAMAAAAQAAIAAQAAAAMAAAAPAAIAAQAAAAMAAAANAAEAAQACAAMAAAAOAAEAAQACAAMAAAAPAAEAAQACAAMAAAAQAAEAAQACAAMAAAARAAEAAQACAAMAAAASAAEAAQACAAMAAAAMAAEAAQACAAMAAAATAAEAAQACAAMAAAATAAIAAQAAAAMAAAASAAIAAQAAAAMAAAASAAMAAQAAAAMAAAATAAMAAQAAAAMAAAAQAAAAAQAJAAMAAAAJAP3/AQAKAAMAAAACAAAAAQAKAAMAAAAEAAAAAQATAAoAAAAHAAAAAQASAAEAAAD//wEAAQAFAAUAAAASAAAAAQAOAAgAAAA=")
 tile_set = SubResource("TileSet_ihfcg")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=340392188]
-script = ExtResource("3_hn12h")
+script = ExtResource("3_rfktq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=507419559]
 position = Vector2(1154.75, 30)
@@ -329,7 +329,7 @@ shape = SubResource("RectangleShape2D_hn12h")
 
 [node name="EventTrigger" type="Area2D" parent="." unique_id=763455060]
 position = Vector2(77, 0)
-script = ExtResource("4_ihfcg")
+script = ExtResource("4_0urlm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EventTrigger" unique_id=1086067194]
 position = Vector2(142, 34)
