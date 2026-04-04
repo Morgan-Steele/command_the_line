@@ -15,10 +15,13 @@ var pattern #enum (solid, dashed, dotted, bold)
 var topper #enum (none, ball, arrow, diamond)
 var affection #int 0-100
 var obedience #int 0-100
-	
+
 #player stats
 var coins #unsigned int
 var health #unsigned int
+
+#Combat Variables
+var in_combat = false
 
 var abilities = []
 

@@ -8,8 +8,8 @@ func setup(enemy):
 	$offensive_button.visible = true
 	$defensive_button.visible = true
 	$escape_button.visible = true
-	$healing_button.visable = true
-	$non_combat_button.visable = true
+	$healing_button.visible = true
+	$non_combat_button.visible = true
 
 func _on_offensive_button_pressed():
 	combat_manager.player_turn(current_enemy, "attack")

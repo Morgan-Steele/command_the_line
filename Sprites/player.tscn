@@ -124,3 +124,12 @@ shape = SubResource("CapsuleShape2D_op7ga")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=534809153]
 position_smoothing_enabled = true
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=129148707]
+custom_minimum_size = Vector2(70, 15)
+offset_left = -32.0
+offset_top = -45.0
+offset_right = 38.0
+offset_bottom = -18.0
+theme_override_colors/font_color = Color(0.84313726, 0, 0.24705882, 1)
+value = 100.0

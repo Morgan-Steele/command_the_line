@@ -7,6 +7,9 @@ func setup(message: String, choices: Array, event: String):
 	$Panel/VBoxContainer/Label.text = message
 	if choices.is_empty():
 		$Panel/VBoxContainer/CloseButton.visible = true 
+		$Panel/VBoxContainer/CloseButton.text = "Close"
+		$Panel/VBoxContainer/Choice1Button.visible = false
+		$Panel/VBoxContainer/Choice2Button.visible = false
 	else:
 		$Panel/VBoxContainer/CloseButton.visible = false
 		$Panel/VBoxContainer/Choice1Button.text = choices[0]
