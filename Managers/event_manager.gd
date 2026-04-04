@@ -97,8 +97,8 @@ func event_request_money():
 func event_request_color():
 	StatsManager.requested_color = randi_range(0,3)
 	if(StatsManager.requested_color==StatsManager.colour):
-		StatsManager.requestd_color=(StatsManager.requested_color+1)%4
-	trigger_popup("event_request_color", "Your Line wants to be "+StatsManager.colour.find_key(StatsManager.requested_color)+". This dye job will cost 20 coins.", ["Pay Up", "Refuse"])
+		StatsManager.requested_color=(StatsManager.requested_color+1)%4
+	trigger_popup("event_request_color", "Your Line wants to be "+StatsManager.Colour.find_key(StatsManager.requested_color)+". This dye job will cost 20 coins.", ["Pay Up", "Refuse"])
 	
 func event_zero_affection():
 	trigger_popup("event_zero_affection", "Your Line has lost all affection for you and murdered you in your sleep :(")
