@@ -10,9 +10,35 @@ func train_ability(Ability ability, Line line, Player player, int cost):
 	#option should not be available if not enough coins
 	
 func obey(Line line, Ability ability): #returns boolean
-	var RANDOM=50 #replace with random num 0-100 
+	var RANDOM=50 #replace with random num 0-100
 	return line.obedience+(ability.like*20)>RANDOM
+	#add support for pleading - change random range maybe?
 
+#func succeed (does ability succeed)
+#returns boolean
+#relies on: 
+#affection(chance to purposely fail if low)
+#enemy's paired stat: block-force dodge-speed attack?
+#skill of ability
+
+#func select (line selects preferred ability)
+#used when disobeying or when allowed to make it's own choice
+#needs a way to iterate through an array of all abilities?
+
+#func use_ability (combines obey, select, succeed)
+
+class_name Enemy:
+	var health #unsigned int
+	var attack #Attack
+	var block # int 0-? How hard they are to hit
+
+class_name Attack:
+	#offence stuff
+	var name #string Cool Name
+	var speed #unsigned int 0-100 How hard it is to dodge
+	var force #unsigned int 0-100 How hard it is to block
+	var damage #int
+	
 class_name Player:
 	var coins #unsigned int
 	var health #unsigned int
