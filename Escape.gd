@@ -1,10 +1,10 @@
 extends Ability
-class_name Offensive
-var base_damage
+class_name Escape
+var base_escape
 var luck
-func _init(t_name, t_skill, t_aptitude, t_like, bdam=10, lucky=5):
+func _init(t_name, t_skill, t_aptitude, t_like, besc=10, lucky=5):
 	super._init(t_name, t_skill, t_aptitude, t_like)
-	base_damage=bdam
+	base_escape=besc
 	luck=lucky
 func use(enemy):
 	enemy.health-=base_damage+randi_range(luck)

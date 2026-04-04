@@ -1,14 +1,12 @@
 extends Ability
-class_name Offensive
-var base_damage
-var luck
-func _init(t_name, t_skill, t_aptitude, t_like, bdam=10, lucky=5):
-	super._init(t_name, t_skill, t_aptitude, t_like)
-	base_damage=bdam
-	luck=lucky
-func use(enemy):
-	enemy.health-=base_damage+randi_range(luck)
-
+class_name Healing
+var base_heal
+func _init(t_name,t_skill,t_aptitude,t_like, bheal=skill/5):
+	super._init(t_name,t_skill,t_aptitude,t_like)
+	base_heal=bheal
+	
+func use(heal):
+	health += base_heal
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

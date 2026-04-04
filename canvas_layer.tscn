@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://0ie4uudpnsqf"]
+
+[ext_resource type="Script" path="res://canvas_layer.gd" id="1_v2lfg"]
+
+[node name="EventPopup" type="CanvasLayer" unique_id=2071342294]
+process_mode = 3
+script = ExtResource("1_v2lfg")
+
+[node name="Panel" type="Panel" parent="." unique_id=1971561245]
+offset_right = 383.0
+offset_bottom = 193.0
+
+[node name="Label" type="Label" parent="." unique_id=2046841046]
+offset_left = 64.0
+offset_top = 15.0
+offset_right = 294.0
+offset_bottom = 77.0
+
+[node name="Button" type="Button" parent="." unique_id=209727774]
+offset_left = 167.0
+offset_top = 140.0
+offset_right = 182.0
+offset_bottom = 157.0

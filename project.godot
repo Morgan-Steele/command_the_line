@@ -17,11 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-<<<<<<< HEAD
-EventManager="*uid://bcwplmj43tdw6"
-=======
 GameManager="*uid://bcwplmj43tdw6"
->>>>>>> 50d721b0277ace3dc682eb6de6857174cc45a2a2
+<<<<<<<HEADEventManager="*uid://bcwplmj43tdw6"
 
 [display]
 
