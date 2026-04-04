@@ -15,6 +15,9 @@ var obedience #int 0-100
 var coins #unsigned int
 var health #unsigned int
 
+#Combat Variables
+var in_combat = false
+
 var abilities = []
 
 func initialize():

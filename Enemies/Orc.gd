@@ -4,7 +4,7 @@ func _ready() -> void:
 	health = 100
 	damage = 50
 	armor = 10
-
+	speed = 20
 func take_damage(amount: int, attack_roll: int) -> void:
 	if attack_roll >= armor:
 		health -= amount
