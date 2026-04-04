@@ -10,5 +10,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-@abstract func take_damage(amount: int) -> void
-@abstract func attack() -> void
+@abstract func take_damage(amount: int, attack_roll: int) -> void
+@abstract func attack() -> int
+@abstract func defend() -> int
+@abstract func unique_move() -> void

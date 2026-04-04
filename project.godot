@@ -18,10 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*uid://bcwplmj43tdw6"
-<<<<<<< HEAD
-=======
-StatsManager="*uid://cxb0ermjwvr7r"
->>>>>>> 0c13266e692888fe14f5553f040accdc5924d20f
 
 [display]
 
