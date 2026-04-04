@@ -5,7 +5,7 @@ func _init(t_name,t_skill,t_aptitude,t_like, bheal=skill/5):
 	super._init(t_name,t_skill,t_aptitude,t_like)
 	base_heal=bheal
 	
-func use(heal):
+func use(health):
 	health += base_heal
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

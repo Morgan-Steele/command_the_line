@@ -13,7 +13,7 @@ func _init(t_name,t_skill,t_aptitude,t_like):
 	aptitude=t_aptitude
 	like=t_like
 
-@abstract func use(enemy)
+@abstract func use(target)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

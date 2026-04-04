@@ -30,11 +30,11 @@ func initialize():
 	topper=randoms[2]
 	
 	#make abilities
-	abilities.append(Ability.Offensive.new("Sword", randf_range(0,50),randf_range(0,100),0))
-	abilities.append(Ability.new("Shield", randf_range(0,50),randf_range(0,100),0))
-	abilities.append(Ability.new("Helicopter", randf_range(0,50),randf_range(0,100),0))
-	abilities.append(Ability.new("Magic Staff", randf_range(0,50),randf_range(0,100),0))
-	abilities.append(Ability.new("Non Combat", randf_range(0,50),randf_range(0,100),0))
+	abilities.append(Offensive.new("Sword", randf_range(0,50),randf_range(0,100),0))
+	abilities.append(Defensive.new("Shield", randf_range(0,50),randf_range(0,100),0))
+	abilities.append(Escape.new("Helicopter", randf_range(0,50),randf_range(0,100),0))
+	abilities.append(Healing.new("Magic Staff", randf_range(0,50),randf_range(0,100),0))
+	abilities.append(Non_Combat.new("Non Combat", randf_range(0,50),randf_range(0,100),0))
 	
 	
 	#assign likes and dislikes
