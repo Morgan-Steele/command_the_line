@@ -14,6 +14,7 @@ var popup_scene = preload("res://Levels/event_popup.tscn")
 
 # Every minute, there is a 30% chance of an event triggering 
 func _process(delta):
+	$ProgressBar.value = StatsManager.health
 	if timer > 10 and not popup_active:
 		print("10 seconds have passed")
 		timer = 0.0
@@ -45,15 +46,20 @@ func trigger_popup(event: String, message: String, choices: Array = []):
 # Handle Choices from Event Popups (Updates StatsManager)
 # TODO: Update with results of event choices and rest of possible events
 func handle_choice(event: String, choice: int):
+	StatsManager.requests+=1
 	match event:
 		"event_request_color":
-			if (choice == 0):
+			if (choice == 0):#no
+				StatsManager.denied+=1
+				StatsManager.affection-=10
 				#StatsManager.
 				return true
-			elif (choice == 1):
+			elif (choice == 1):#yes
+				StatsManager.affection+=10
 				return true
 		"event_request_money":
 			if (choice == 0):
+				StatsManager.denied+=1
 				#StatsManager.
 				return true
 			elif (choice == 1):
