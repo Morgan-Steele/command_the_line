@@ -1,7 +1,21 @@
 extends Node2D
-func train_ability(Ability ability, Line line):
+func train_ability(Ability ability, Line line, Player player, int cost):
 	if(line.obedience+(ability.like*training_level)>50):
 		ability.skill+=ability.aptitude
+		#check if affection high enough and 
+		#chance it stabs you if not
+	#else notify player that training failed
+	line.affection+=ability.like
+	player.coins-=cost #remember to check if enough coins before calling function
+	#option should not be available if not enough coins
+	
+func obey(Line line, Ability ability): #returns boolean
+	var RANDOM=50 #replace with random num 0-100 
+	return line.obedience+(ability.like*20)>RANDOM
+
+class_name Player:
+	var coins #unsigned int
+	var health #unsigned int
 
 class_name Line:
 	var color
