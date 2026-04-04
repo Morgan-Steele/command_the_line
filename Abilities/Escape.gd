@@ -7,7 +7,11 @@ func _init(t_name, t_skill, t_aptitude, t_like, besc=10, lucky=5):
 	base_escape=besc
 	luck=lucky
 func use(enemy):
-	pass
+	if enemy.speed < (base_escape + randi_range(0,luck)):
+		StatsManager.in_combat = false
+	else:
+		StatsManager.health -= enemy.attack
+		base_escape += 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

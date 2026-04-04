@@ -1,9 +1,10 @@
 @abstract
-extends Node
+extends CharacterBody2D
 class_name Enemy
 var health: int
 var damage: int
 var armor: int
+var speed: int
 func _ready() -> void:
 	pass
 func _process(delta: float) -> void:
