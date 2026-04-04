@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameManager="*uid://bcwplmj43tdw6"
 
+
 [display]
 
 window/size/viewport_width=1920
