@@ -85,6 +85,9 @@ func select():#returns selected ability
 #enemy's paired stat: block-force dodge-speed attack?
 #skill of ability
 
+#How much damage the player takes from the enemy
+func take_damage(attack):
+	health -= attack
 
 #func use_ability (combines obey, select, succeed)
 func use_ability(sel_ability):
