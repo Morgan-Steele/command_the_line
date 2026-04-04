@@ -1,4 +1,6 @@
-@abstract class_name Enemy
+@abstract
+extends Node
+class_name Enemy
 var health: int
 var damage: int
 var armor: int

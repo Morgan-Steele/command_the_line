@@ -1,5 +1,6 @@
+@abstract 
 extends Node
-@abstract class_name Ability
+class_name Ability
 var label #string
 var skill #int 0-100 - how good line is at it
 var aptitude #int 0-100? idk. It's how much the line improves each time it trains it
