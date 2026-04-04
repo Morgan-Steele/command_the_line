@@ -2,9 +2,10 @@ extends Node
 #enums
 enum Texture {solid, dash, dotted, bold}
 enum Topper {none, ball, arrow diamond}
+enum Color {black, red, green, blue}
 
 #line stats
-var color
+var color #enum (black, red, green, blue)
 var texture #enum (solid, dashed, dotted, bold)
 var topper #enum (none, ball, arrow, diamond)
 var affection #int 0-100
@@ -21,6 +22,14 @@ func initialize():
 	coins=0
 	affection=20
 	obedience=20
+	randoms=[]
+	for i in 4:
+		randoms.append(randf_range(0,3))
+	color=randoms[0]
+	texture=randoms[1]
+	topper=randoms[2]
+	
+	#make abilities
 	
 
 func train_ability(Ability ability, int cost):
@@ -38,6 +47,21 @@ func obey(Ability ability): #returns boolean
 	return obedience+(ability.like*20)>RANDOM
 	#add support for pleading - change random range maybe?
 	
+#func select (line selects preferred ability)
+#used when disobeying or when allowed to make it's own choice
+#needs a way to iterate through an array of all abilities?
+func select():#returns
+	
+
+#func succeed (does ability succeed)
+#returns boolean
+#relies on: 
+#affection(chance to purposely fail if low)
+#enemy's paired stat: block-force dodge-speed attack?
+#skill of ability
+
+
+#func use_ability (combines obey, select, succeed)
 
 
 # Called when the node enters the scene tree for the first time.
