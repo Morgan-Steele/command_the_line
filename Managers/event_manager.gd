@@ -35,6 +35,8 @@ func select_event():
 	# TODO: Change probabilities based on current stats
 	#based on affection
 	var chooser = randi_range(1,180)
+	print("chooser: ")
+	print(chooser)
 	var chosen
 	while (true):
 		if(chooser<(60-(StatsManager.affection-50))):
@@ -65,7 +67,9 @@ func handle_choice(event: String, choice: int):
 	match event:
 		"event_request_color":
 			if (StatsManager.coins<20):
-				choice=0
+				StatsManager.log+="You did not have 20 coins for a dye job.\nYour line is upset by your false promises\n\n"
+				StatsManager.affection-=5
+				choice=1
 			if (choice == 1):#no
 				StatsManager.denied+=1
 				StatsManager.affection-=10
@@ -81,6 +85,8 @@ func handle_choice(event: String, choice: int):
 				return true
 		"event_request_money":
 			if(StatsManager.coins<StatsManager.requested_coins):
+				StatsManager.log+="You did not have the money you promised.\nYour line is disappointed and confused why you lied\n\n"
+				StatsManager.affection-=5
 				choice=1
 			if (choice == 1):#no
 				StatsManager.denied+=1

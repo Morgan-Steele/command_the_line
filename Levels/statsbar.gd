@@ -11,6 +11,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$Panel2/BoxContainer/Label2.text=StatsManager.log
+	if(len(StatsManager.log)>200):
+		StatsManager.log=""
+	
 	$BoxContainer/Label.text = "Coins: "+str(StatsManager.coins)
 	$BoxContainer/ProgressBar.value=StatsManager.affection
 	$BoxContainer/ProgressBar2.value=StatsManager.obedience
@@ -27,6 +31,6 @@ func _process(delta):
 	$Panel/BoxContainer2/BoxContainer4/ProgressBar.value=StatsManager.abilities[3].skill
 	$Panel/BoxContainer2/BoxContainer4/ProgressBar2.value=StatsManager.abilities[3].aptitude
 	
-	$Panel/BoxContainer2/BoxContainer4/ProgressBar.value=StatsManager.abilities[4].skill
-	$Panel/BoxContainer2/BoxContainer4/ProgressBar2.value=StatsManager.abilities[4].aptitude
+	$Panel/BoxContainer2/BoxContainer5/ProgressBar.value=StatsManager.abilities[4].skill
+	$Panel/BoxContainer2/BoxContainer5/ProgressBar2.value=StatsManager.abilities[4].aptitude
 	

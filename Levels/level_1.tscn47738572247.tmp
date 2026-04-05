@@ -466,16 +466,16 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -380.0
 offset_top = 18.0
-offset_right = -16.0
-offset_bottom = 312.0
+offset_right = -21.0
+offset_bottom = 184.0
 grow_horizontal = 0
 
 [node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/Panel2" unique_id=2026365804]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 354.0
-offset_bottom = 282.0
+offset_right = 347.0
+offset_bottom = 157.0
 vertical = true
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel2/BoxContainer" unique_id=1061866535]

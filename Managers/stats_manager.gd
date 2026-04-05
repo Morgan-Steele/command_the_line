@@ -3,9 +3,10 @@ extends Node
 enum Pattern {solid, dash, dotted, bold}
 enum Topper {none, ball, arrow, diamond}
 enum Colour {black, red, green, blue}
-var like_string={-2:"Hates", -1:"Dislikes", 0:"", 1:"Likes", 2:"Loves"}
+var like_string={-2:"Hates", -1:"Dislikes", 0:"Nuetral", 1:"Likes", 2:"Loves"}
 
 var combat_desc #string
+var log #string
 
 var requests #int
 var denied #int
@@ -37,6 +38,7 @@ func _ready():
 	requests=0
 	denied=0
 	combat_desc=""
+	log=""
 	
 	health=100
 	coins=10
