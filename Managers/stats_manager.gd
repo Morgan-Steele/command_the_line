@@ -8,6 +8,7 @@ var requests #int
 var denied #int
 var requested_color
 var requested_coins
+var sabotage #bool (starts false at beginning of every battle, checked at end, then reset)
 
 #line stats
 var colour #enum (black, red, green, blue)
@@ -26,6 +27,7 @@ var in_combat = false
 var abilities = []
 
 func _ready():
+	sabotage=false
 	requested_color=0
 	requested_coins=0
 	requests=0
@@ -98,13 +100,24 @@ func select():#returns selected ability
 #affection(chance to purposely fail if low)
 #enemy's paired stat: block-force dodge-speed attack?
 #skill of ability
+func succeed(enemy, ability):
+	if(randi_range(0,99)>(2*affection)):#sabotage
+		sabotage=true
+		return false
+	if (ability is Offensive):
+		return enemy.armor > randi_range(0,90)+(ability.skill/2)
+	if (ability is Escape):
+		return true #deal with it internally
+	if (ability is Defensive):
+		
+	
 
 #How much damage the player takes from the enemy
 func take_damage(attack):
 	health -= attack
 
 #func use_ability (combines obey, select, succeed)
-func use_ability(sel_ability):
+func use_ability(sel_ability, enemy):
 	var ability
 	# Temporary hardcode to run
 	var succeed = true
@@ -112,8 +125,8 @@ func use_ability(sel_ability):
 		ability=sel_ability
 	else:
 		ability=select()
-	if(succeed):
-		ability.use
+	if(succeed(enemy, ability)):
+		ability.use(enemy)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

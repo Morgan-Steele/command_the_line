@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -500.0
+var JUMP_VELOCITY = -400.0+(StatsManager.abilities[4].skill * 2)
 
 func _process(delta):
 	$ProgressBar.value = StatsManager.health
