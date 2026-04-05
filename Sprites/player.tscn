@@ -283,22 +283,22 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_op7ga"]
-radius = 12.0
-height = 132.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eksx6"]
+radius = 20.0
+height = 80.0
 
 [node name="Player" type="CharacterBody2D" unique_id=202545245 groups=["player"]]
+position = Vector2(2, -5)
 script = ExtResource("1_onrkg")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=204282189 groups=["player"]]
 sprite_frames = SubResource("SpriteFrames_u1c27")
 animation = &"attack"
-frame = 2
-frame_progress = 0.4904464
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=354912831 groups=["player"]]
-shape = SubResource("CapsuleShape2D_op7ga")
+position = Vector2(-10, 23)
+shape = SubResource("CapsuleShape2D_eksx6")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=534809153 groups=["camera"]]
 position_smoothing_enabled = true
