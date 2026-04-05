@@ -21,6 +21,7 @@ GameManager="*uid://bcwplmj43tdw6"
 <<<<<<<HEADEventManager="*uid://bcwplmj43tdw6"
 EventManager="*uid://bcwplmj43tdw6"
 StatsManager="*uid://cxb0ermjwvr7r"
+CombatManager="*uid://nej27w6dtcgf"
 
 [display]
 
