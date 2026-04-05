@@ -106,10 +106,8 @@ func succeed(enemy, ability):
 		return false
 	if (ability is Offensive):
 		return enemy.armor > randi_range(0,90)+(ability.skill/2)
-	if (ability is Escape):
+	else:
 		return true #deal with it internally
-	if (ability is Defensive):
-		
 	
 
 #How much damage the player takes from the enemy
