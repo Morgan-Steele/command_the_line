@@ -20,6 +20,7 @@ var obedience #int 0-100
 #player stats
 var coins #unsigned int
 var health #unsigned int
+var max_health = 100
 
 #Combat Variables
 var in_combat = false
@@ -37,13 +38,10 @@ func _ready():
 	coins=0
 	affection=20
 	obedience=20
-	var randoms=[]
-	for i in 4:
-		randoms.append(randf_range(0,3))
-	colour=randoms[0]
-	pattern=randoms[1]
-	topper=randoms[2]
 	
+	colour = randi_range(0, 3)
+	pattern = randi_range(0, 3)
+	topper = randi_range(0, 2)
 	
 	#make abilities
 	abilities.append(Offensive.new("Sword", randf_range(0,50),randf_range(0,100),0))
@@ -116,12 +114,16 @@ func take_damage(attack):
 
 #func use_ability (combines obey, select, succeed)
 func use_ability(sel_ability, enemy):
+	print("Use ability")
 	var ability
 	# Temporary hardcode to run
 	#var succeed = true
 	if obey(sel_ability):
 		ability=sel_ability
+		print(ability)
 	else:
+		print(ability)
 		ability=select()
 	if(succeed(enemy, ability)):
 		ability.use(enemy)
+		print(ability)

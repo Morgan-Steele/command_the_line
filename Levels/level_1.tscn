@@ -312,7 +312,7 @@ size = Vector2(14.5, 50)
 [node name="level1" type="Node2D" unique_id=154210673]
 
 [node name="Orc" parent="." unique_id=1914695234 instance=ExtResource("1_syshm")]
-position = Vector2(2246, -144)
+position = Vector2(609, 48)
 
 [node name="Player" parent="." unique_id=202545245 instance=ExtResource("1_rf6l5")]
 

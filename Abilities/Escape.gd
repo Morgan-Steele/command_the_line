@@ -10,14 +10,5 @@ func use(enemy):
 	if enemy.speed < (randi_range(0,luck) + StatsManager.abilities[2].skill/50):
 		StatsManager.in_combat = false
 	else:
-		StatsManager.health -= enemy.attack
+		StatsManager.health -= await enemy.attack()
 		base_escape += 5
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

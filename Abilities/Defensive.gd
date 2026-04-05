@@ -10,5 +10,5 @@ func _init(t_name, t_skill, t_aptitude, t_like, bblock=10, lucky=20):
 
 func use(enemy):
 	var blocked = floor(StatsManager.abilities[1].skill/10) + randi_range(0, luck)
-	var damage = enemy.attack()
+	var damage = await enemy.attack()
 	StatsManager.health -= max(0, damage - blocked)
