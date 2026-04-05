@@ -25,11 +25,16 @@ func player_turn(player_action: String):
 		return
 	player_active = false
 	match player_action:
-		"attack": await StatsManager.abilities[0].use(current_enemy)
-		"defend": await StatsManager.abilities[1].use(current_enemy)
-		"escape": await StatsManager.abilities[2].use(current_enemy)
-		"healing": await StatsManager.abilities[3].use(current_enemy)
-		"non_combat": StatsManager.abilities[4].use(current_enemy)
+		"attack": await StatsManager.use_ability(StatsManager.abilities[0],current_enemy)
+		"defend": await StatsManager.use_ability(StatsManager.abilities[1],current_enemy)
+		"escape": await StatsManager.use_ability(StatsManager.abilities[2],current_enemy)
+		"healing": await StatsManager.use_ability(StatsManager.abilities[3],current_enemy)
+		"non_combat": await StatsManager.use_ability(StatsManager.abilities[4],current_enemy)
+		#"attack": await StatsManager.abilities[0].use(current_enemy)
+		#"defend": await StatsManager.abilities[1].use(current_enemy)
+		#"escape": await StatsManager.abilities[2].use(current_enemy)
+		#"healing": await StatsManager.abilities[3].use(current_enemy)
+		#"non_combat": StatsManager.abilities[4].use(current_enemy)
 	await check_combat_end() # Kill dead people
 	if current_enemy == null:
 		return

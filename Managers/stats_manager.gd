@@ -89,14 +89,14 @@ func select():#returns selected ability
 		ranges.append((abilities[i].like*7)+20)
 	var selected=randi_range(0,100)
 	if selected<ranges[0]:
-		return abilities[0]
+		return 0;
 	if selected<(ranges[0]+ranges[1]):
-		return abilities[1]
+		return 1
 	if selected<(ranges[0]+ranges[1]+ranges[2]):
-		return abilities[2]
+		return 2
 	if selected<(ranges[0]+ranges[1]+ranges[2]+ranges[3]):
-		return abilities[3]
-	return abilities[4]
+		return 3
+	return 4
 		
 	
 
@@ -123,21 +123,24 @@ func take_damage(attack):
 #func use_ability (combines obey, select, succeed)
 func use_ability(sel_ability, enemy):
 	print("Use ability")
-	var ability
+	var ability=sel_ability
 	# Temporary hardcode to run
 	#var succeed = true
 	if obey(sel_ability):
 		ability=sel_ability
 		affection+=ability.like
-		combat_desc="Line did as you told it and used "+ability.title+"\n"
+		combat_desc="Line did as you told it and used "+ability.label+"\n"
+		print("debug1")
 		print(ability)
 	else:
+		print("debug2")
 		print(ability)
-		combat_desc="Line didn't listen to you. Line used "+ability.title+" instead!\n"
-		ability=select()
+		ability=abilities[select()]
+		combat_desc="Line didn't listen to you. Line used "+ability.label+" instead!\n"
 	if(succeed(enemy, ability)):
 		ability.use(enemy)
-		ability.skill=min(100, ability.skill+(floor(ability.aptitude/10)))
+		ability.skill=min(100, ability.skill+(floor(ability.aptitude/5)))
 		print(ability)
 	else:
-		combat_desc+="Line tried to use "+ability.title+" but failed :(\n"
+		combat_desc+="Line tried to use "+ability.label+" but failed :(\n"
+		ability.skill=min(100, ability.skill+(floor(ability.aptitude/10)))
