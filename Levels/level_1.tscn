@@ -1,9 +1,10 @@
 [gd_scene format=4 uid="uid://gbxr2njcy7l7"]
 
 [ext_resource type="PackedScene" uid="uid://bllxvslknralp" path="res://Sprites/player.tscn" id="1_rf6l5"]
-[ext_resource type="PackedScene" uid="uid://c6btu54vson5x" path="res://Enemies/Orc/orc.tscn" id="1_syshm"]
+[ext_resource type="PackedScene" path="res://Enemies/Orc/orc.tscn" id="1_syshm"]
 [ext_resource type="Texture2D" uid="uid://bdh8icav1d41u" path="res://Levels/tilesheet_complete.png" id="2_syshm"]
 [ext_resource type="Script" uid="uid://batggonssxop1" path="res://Levels/area_2d.gd" id="3_rfktq"]
+[ext_resource type="Script" uid="uid://d14ii4ds4tyxu" path="res://Levels/statsbar.gd" id="5_syshm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hn12h"]
 texture = ExtResource("2_syshm")
@@ -309,6 +310,12 @@ sources/1 = SubResource("TileSetAtlasSource_hn12h")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hn12h"]
 size = Vector2(14.5, 50)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_syshm"]
+bg_color = Color(0.6728279, 0.25306806, 0.6590878, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfktq"]
+bg_color = Color(0.29119852, 0.3249887, 0.83638066, 1)
+
 [node name="level1" type="Node2D" unique_id=154210673]
 
 [node name="Orc" parent="." unique_id=1914695234 instance=ExtResource("1_syshm")]
@@ -326,5 +333,30 @@ script = ExtResource("3_rfktq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=507419559]
 position = Vector2(1154.75, 30)
 shape = SubResource("RectangleShape2D_hn12h")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2054839672]
+script = ExtResource("5_syshm")
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1482887165]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/Panel" unique_id=380374425]
+layout_mode = 1
+offset_right = 123.0
+offset_bottom = 85.0
+vertical = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/BoxContainer" unique_id=1010084757]
+layout_mode = 2
+text = "Coins: "
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Panel/BoxContainer" unique_id=361206504]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_syshm")
+
+[node name="ProgressBar2" type="ProgressBar" parent="CanvasLayer/Panel/BoxContainer" unique_id=1280970842]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_rfktq")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

@@ -1,10 +1,7 @@
 [gd_scene format=3 uid="uid://0ie4uudpnsqf"]
 
-[ext_resource type="Script" path="res://canvas_layer.gd" id="1_v2lfg"]
-
 [node name="EventPopup" type="CanvasLayer" unique_id=2071342294]
 process_mode = 3
-script = ExtResource("1_v2lfg")
 
 [node name="Panel" type="Panel" parent="." unique_id=1971561245]
 offset_right = 383.0
