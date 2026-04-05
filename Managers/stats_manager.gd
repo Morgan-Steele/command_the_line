@@ -6,6 +6,8 @@ enum Colour {black, red, green, blue}
 
 var requests #int
 var denied #int
+var requested_color
+var requested_coins
 
 #line stats
 var colour #enum (black, red, green, blue)
@@ -24,6 +26,8 @@ var in_combat = false
 var abilities = []
 
 func _ready():
+	requested_color=0
+	requested_coins=0
 	requests=0
 	denied=0
 	
@@ -37,6 +41,7 @@ func _ready():
 	colour=randoms[0]
 	pattern=randoms[1]
 	topper=randoms[2]
+	
 	
 	#make abilities
 	abilities.append(Offensive.new("Sword", randf_range(0,50),randf_range(0,100),0))

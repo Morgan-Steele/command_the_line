@@ -48,20 +48,31 @@ func handle_choice(event: String, choice: int):
 	StatsManager.requests+=1
 	match event:
 		"event_request_color":
+			if (StatsManager.coins<20):
+				choice=0
 			if (choice == 0):#no
 				StatsManager.denied+=1
 				StatsManager.affection-=10
-				#StatsManager.
+				if(StatsManager.denied/StatsManager.requests < .5):
+					StatsManager.obedience+=10
 				return true
 			elif (choice == 1):#yes
+				StatsManager.coins-=20
+				StatsManager.color=StatsManager.requested_color
 				StatsManager.affection+=10
+				if(StatsManager.denied/StatsManager.requests < .5):
+					StatsManager.obedience-=10
 				return true
 		"event_request_money":
 			if (choice == 0):
 				StatsManager.denied+=1
-				#StatsManager.
+				StatsManager.affection-=10
 				return true
 			elif (choice == 1):
+				StatsManager.coins-=StatsManager.requested_coins
+				StatsManager.affection+=10
+				if(StatsManager.denied/StatsManager.requests < .5):
+					StatsManager.obedience-=10
 				return true	
 	return true
 
@@ -70,24 +81,29 @@ func handle_choice(event: String, choice: int):
 
 func event_found_potion():
 	trigger_popup("event_found_potion", "Your Line found a health potion", [])
-	#StatManager.health = 100
+	StatsManager.health+=randi_range(5,55)
+	if StatsManager.health>100:
+		StatsManager.health=100
 
 func event_found_coins():
-	trigger_popup("event_found_coins", "Your Line found coins", [])
-	#StatManager.coin += 50
+	var num_coins=randi_range(1,20)
+	trigger_popup("event_found_coins", "Your Line found "+str(num_coins)+" coins", [])
+	StatsManager.coins+=num_coins
 	
 func event_request_money():
-	trigger_popup("event_request_money", "Your Line asked for money", ["Give money", "Refuse"])
+	StatsManager.requested_coins=randi_range(1,StatsManager.coins)	
+	trigger_popup("event_request_money", "Your Line asked for " +str(StatsManager.requested_coins)+" money", ["Give money", "Refuse"])
 
 func event_request_color():
-	trigger_popup("event_request_color", "Your Line asked for a color change", ["Pay Up", "Refuse"])
-	#StatManager.update_color()
+	StatsManager.requested_color = randi_range(0,3)
+	if(StatsManager.requested_color==StatsManager.colour):
+		StatsManager.requested_color=(StatsManager.requested_color+1)%4
+	trigger_popup("event_request_color", "Your Line wants to be "+StatsManager.Colour.find_key(StatsManager.requested_color)+". This dye job will cost 20 coins.", ["Pay Up", "Refuse"])
 	
 func event_zero_affection():
 	trigger_popup("event_zero_affection", "Your Line has lost all affection for you and murdered you in your sleep :(")
-	#StatManager.take_damage(100)
+	StatsManager.health=0
 
 func event_total_obedience():
 	trigger_popup("event_total_obedience", "Your Line has been overly disiplined and goes through a rebellious phase")
-	#StatManager.something happens
-	
+	StatsManager.obedience=20
