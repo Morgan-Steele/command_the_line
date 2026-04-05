@@ -34,8 +34,15 @@ func die():
 	_animated_sprite.play(\"Death\")
 	await _animated_sprite.animation_finished
 	queue_free()
+	
+	#var player = get_tree().get_first_node_in_group(\"player\")
+	#player.get_node(\"AnimatedSprite2D\").play(\"defend\")
+	#await player.get_node(\"AnimatedSprite2D\").animation_finished
+	#CombatManager.player_turn(\"defend\")
+	#update_display()
 
 func attack() -> int:
+	print(\"Orc attacked\")
 	_animated_sprite.play(\"Attack\")
 	await _animated_sprite.animation_finished
 	_animated_sprite.play(\"idle\")
@@ -180,7 +187,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rj1th")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 5.0
 }, {
@@ -203,7 +210,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jxspg")
 }],
-"loop": true,
+"loop": false,
 "name": &"Dealth",
 "speed": 5.0
 }, {
@@ -260,7 +267,7 @@ shape = SubResource("RectangleShape2D_6ssb8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=907736130]
 sprite_frames = SubResource("SpriteFrames_8lmbb")
-animation = &"Dealth"
+animation = &"Attack"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=590384644]
 
