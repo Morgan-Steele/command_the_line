@@ -18,10 +18,10 @@ var popup_scene = preload("res://Levels/event_popup.tscn")
 # Every minute, there is a 30% chance of an event triggering 
 func _process(delta):
 	
-	if timer > 10 and not popup_active and StatsManager.is_alive and not StatsManager.in_combat:
+	if timer > 30 and not popup_active and StatsManager.is_alive and not StatsManager.in_combat:
 		print("10 seconds have passed")
 		timer = 0.0
-		if randf() < 0.7:
+		if randf() < 0.4:
 			print("Event Triggered")
 			select_event()
 		else:
