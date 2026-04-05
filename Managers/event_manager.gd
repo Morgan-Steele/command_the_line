@@ -17,7 +17,7 @@ var popup_scene = preload("res://Levels/event_popup.tscn")
 
 # Every minute, there is a 30% chance of an event triggering 
 func _process(delta):
-	if timer > 10 and not popup_active:
+	if timer > 10000 and not popup_active:
 		print("10 seconds have passed")
 		timer = 0.0
 		if randf() < 0.7:

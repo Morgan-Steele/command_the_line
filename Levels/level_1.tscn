@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://gbxr2njcy7l7"]
 
 [ext_resource type="PackedScene" uid="uid://bllxvslknralp" path="res://Sprites/player.tscn" id="1_rf6l5"]
+[ext_resource type="PackedScene" uid="uid://c6btu54vson5x" path="res://Enemies/Orc/orc.tscn" id="1_syshm"]
 [ext_resource type="Texture2D" uid="uid://bdh8icav1d41u" path="res://Levels/tilesheet_complete.png" id="2_syshm"]
 [ext_resource type="Script" uid="uid://batggonssxop1" path="res://Levels/area_2d.gd" id="3_rfktq"]
 
@@ -309,6 +310,9 @@ sources/1 = SubResource("TileSetAtlasSource_hn12h")
 size = Vector2(14.5, 50)
 
 [node name="level1" type="Node2D" unique_id=154210673]
+
+[node name="Orc" parent="." unique_id=1914695234 instance=ExtResource("1_syshm")]
+position = Vector2(2246, -144)
 
 [node name="Player" parent="." unique_id=202545245 instance=ExtResource("1_rf6l5")]
 

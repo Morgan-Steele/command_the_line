@@ -57,7 +57,7 @@ func _ready():
 	var likes=[-2,-1,0,1,2]
 	likes.shuffle()
 	for i in 5:
-		abilities[i]=likes[i]
+		abilities[i].like = likes[i]
 
 func train_ability(ability, cost): #Ability, int
 	if(obedience+(ability.like*ability.training_level)>50):
@@ -118,15 +118,10 @@ func take_damage(attack):
 func use_ability(sel_ability, enemy):
 	var ability
 	# Temporary hardcode to run
-	var succeed = true
+	#var succeed = true
 	if obey(sel_ability):
 		ability=sel_ability
 	else:
 		ability=select()
 	if(succeed(enemy, ability)):
 		ability.use(enemy)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

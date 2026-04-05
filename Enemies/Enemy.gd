@@ -6,10 +6,6 @@ var damage: int
 var armor: int
 var speed: int
 var direction = -1
-func _ready() -> void:
-	pass
-func _process(delta: float) -> void:
-	pass
 
 @abstract func take_damage(amount: int, attack_roll: int) -> void
 @abstract func attack() -> int
@@ -26,5 +22,5 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	move_and_slide()
-	$AnimatedSprite2D.flip_h = direction > 0
+
 	

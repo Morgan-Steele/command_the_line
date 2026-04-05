@@ -1,6 +1,5 @@
 class_name Goblin extends Enemy
 
-
 #Base stats of the enemy, Goblin has low health but attacks fast & multiple times
 func _ready() -> void:
 	health = 40
@@ -11,14 +10,19 @@ func _ready() -> void:
 func take_damage(amount: int, attack_roll: int) -> void:
 	if attack_roll > armor:
 		health -= amount
+		if health <= 0:
+			die()
 	else:
 		print("Miss")
 
+func die():
+	queue_free()
+
 func attack() -> int:
-	return damage
+	return randi_range(damage - 5, damage + 5)
 	
 func defend() -> int:
-	return armor
+	return randi_range(armor - 5, armor + 5)
 	
 func unique_move() -> void:
 	print("Goblin taunts so you must attack!")
