@@ -12,12 +12,24 @@ func _ready() -> void:
 func _process(_delta):
 	pass
 
+func _on_proximity_area_body_entered(body):
+	if body.name == "player":
+		StatsManager.in_combat = true
+		CombatManager.start_combat()
+
 func take_damage(amount: int, attack_roll: int) -> void:
 	if attack_roll >= armor:
 		health -= amount
+		if health <= 0:
+			_animated_sprite.play("Death")
+			die()
+			StatsManager.in_combat = false
+
+func die():
+	queue_free()
 
 func attack() -> int:
-	_animated_sprite.play("attack")
+	_animated_sprite.play("Attack")
 	await _animated_sprite.animation_finished
 	_animated_sprite.play("idle")
 	return damage

@@ -257,11 +257,24 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r07xn"]
+size = Vector2(17, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fbsxd"]
+radius = 148.86235
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=122616481]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=639653028]
 sprite_frames = SubResource("SpriteFrames_ls6ty")
 animation = &"idle"
-frame_progress = 0.6308277
+frame_progress = 0.73744076
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1830407413]
+[node name="Rename" type="CollisionShape2D" parent="." unique_id=1830407413]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_r07xn")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1217976242]
+
+[node name="Detection Radius" type="CollisionShape2D" parent="Area2D" unique_id=967873383]
+shape = SubResource("CircleShape2D_fbsxd")
