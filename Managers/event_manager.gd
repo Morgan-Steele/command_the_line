@@ -10,6 +10,9 @@ var events = ["event_request_color",
 			"event_request_money", 
 			"event_found_potion",
 			"event_found_coins"]
+var good_events = ["event_found_potion","event_found_coins","event_happy"]
+var nuetral_events = ["event_request_color","event_request_money"]
+var bad_events = ["event_trip","event_depression"]
 var popup_scene = preload("res://Levels/event_popup.tscn")
 
 # Every minute, there is a 30% chance of an event triggering 
@@ -29,7 +32,19 @@ func _process(delta):
 # Randomly Selects an event to trigger
 func select_event():
 	# TODO: Change probabilities based on current stats
-	var chosen = events[randi() % events.size()]
+	#based on affection
+	var chooser = randi_range(1,180)
+	var chosen
+	while (true):
+		if(chooser<(60-(StatsManager.affection-50))):
+			chosen = events[randi() % bad_events.size()]
+			break
+		if(chooser<((60-(StatsManager.affection-50)))+60):
+			chosen = events[randi() % nuetral_events.size()]
+			break
+		chosen = events[randi() % good_events.size()]
+		break
+	
 	print("The chosen event is:")
 	print(chosen)
 	call(chosen)
@@ -78,6 +93,32 @@ func handle_choice(event: String, choice: int):
 
 # Create Popup with specific options and label
 # TODO: Update StatsManager with results
+#to implement: trip, depression, happy
+
+func event_depression():
+	var random
+	for i in StatsManager.abilities:
+		random=randi_range(0,20)
+		i.skill-=random
+		if(i.skill<0):
+			i.skill=0
+	trigger_popup("event_depression", "Your Line has been feeling a little off recently", [])
+	
+func event_happy():
+	var random
+	for i in StatsManager.abilities:
+		random=randi_range(0,20)
+		i.skill+=random
+		if(i.skill>100):
+			i.skill=100
+	trigger_popup("event_happy", "Your Line feels on top of the world", [])
+
+func event_trip():
+	var health = randi_range(1,10)
+	StatsManager.health-=health
+	if (StatsManager.health<0):
+		StatsManager.health=0
+	trigger_popup("event_trip", "-"+str(health)+" Ouch, that hurt! You've been stumbling over your line a lot recently and you're starting to get suspcious.", [])
 
 func event_found_potion():
 	trigger_popup("event_found_potion", "Your Line found a health potion", [])
