@@ -2,9 +2,20 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 var JUMP_VELOCITY = -500.0 #+(StatsManager.abilities[4].skill * 2)
+var is_dead = false
 
 func _process(delta):
 	$ProgressBar.value = StatsManager.health
+	if StatsManager.health <= 0 and not is_dead:
+		die()
+
+func die():
+	print("User Dies")
+	is_dead = true
+	$AnimatedSprite2D.play("dying")
+	await get_tree().create_timer(4).timeout  # adjust to match animation length
+	print("Human dead")
+	get_tree().change_scene_to_file("res://Levels/game_over.tscn")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

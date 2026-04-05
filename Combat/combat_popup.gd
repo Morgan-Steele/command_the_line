@@ -2,13 +2,13 @@ extends CanvasLayer
 
 func setup(enemy):
 	$Panel/VBoxContainer/Label.text = "Enemy Health: " + str(enemy.health)
-	#$Panel/VBoxContainer/Label2.text = "Your Health: " + str(StatsManager.health)
+	#$Panel/VBoxContainer/PlayerHealthLabel.text = "Your Health: " + str(StatsManager.health)
 
 func update_display():
 	if CombatManager.current_enemy:
 		$Panel/VBoxContainer/Label.text = "Enemy Health: " + str(CombatManager.current_enemy.health)
-	#$Panel/VBoxContainer/Label2.text = "Your Health: " + str(StatsManager.health)
-
+	var player = get_tree().get_first_node_in_group("player")
+	player.get_node("ProgressBar").value = StatsManager.health
 func _on_attack_button_pressed() -> void:
 	print("Attack pressed")
 	var player = get_tree().get_first_node_in_group("player")
