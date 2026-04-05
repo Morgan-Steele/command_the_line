@@ -54,6 +54,7 @@ func check_combat_end():
 	elif current_enemy == null or current_enemy.health <= 0:
 		print("orc dies")
 		current_enemy.die()
+		StatsManager.coins+=randi_range(5,100)
 		end_combat()
 	
 func end_combat():
