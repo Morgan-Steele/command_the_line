@@ -3,6 +3,7 @@ extends Node
 enum Pattern {solid, dash, dotted, bold}
 enum Topper {none, ball, arrow, diamond}
 enum Colour {black, red, green, blue}
+var like_string={-2:"Hates", -1:"Dislikes", 0:"", 1:"Likes", 2:"Loves"}
 
 var combat_desc #string
 
@@ -123,6 +124,7 @@ func use_ability(sel_ability, enemy):
 	#var succeed = true
 	if obey(sel_ability):
 		ability=sel_ability
+		affection+=ability.like
 		combat_desc="Line did as you told it and used "+ability.title+"\n"
 		print(ability)
 	else:

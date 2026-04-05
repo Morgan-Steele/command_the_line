@@ -66,25 +66,29 @@ func handle_choice(event: String, choice: int):
 		"event_request_color":
 			if (StatsManager.coins<20):
 				choice=0
-			if (choice == 0):#no
+			if (choice == 1):#no
 				StatsManager.denied+=1
 				StatsManager.affection-=10
 				if(StatsManager.denied/StatsManager.requests < .5):
 					StatsManager.obedience+=10
 				return true
-			elif (choice == 1):#yes
+			elif (choice == 0):#yes
 				StatsManager.coins-=20
-				StatsManager.color=StatsManager.requested_color
+				StatsManager.colour=StatsManager.requested_color
 				StatsManager.affection+=10
 				if(StatsManager.denied/StatsManager.requests < .5):
 					StatsManager.obedience-=10
 				return true
 		"event_request_money":
-			if (choice == 0):
+			if(StatsManager.coins<StatsManager.requested_coins):
+				choice=1
+			if (choice == 1):#no
 				StatsManager.denied+=1
 				StatsManager.affection-=10
+				if(StatsManager.denied/StatsManager.requests < .5):
+					StatsManager.obedience+=10
 				return true
-			elif (choice == 1):
+			elif (choice == 0):#yes
 				StatsManager.coins-=StatsManager.requested_coins
 				StatsManager.affection+=10
 				if(StatsManager.denied/StatsManager.requests < .5):
