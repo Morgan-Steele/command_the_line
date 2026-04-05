@@ -3,7 +3,7 @@ extends Node
 enum Pattern {solid, dash, dotted, bold}
 enum Topper {none, ball, arrow, diamond}
 enum Colour {black, red, green, blue}
-var like_string={-2:"Hates", -1:"Dislikes", 0:"Nuetral", 1:"Likes", 2:"Loves"}
+var like_string={-2:"Hates", -1:"Dislikes", 0:"Neutral", 1:"Likes", 2:"Loves"}
 
 var combat_desc #string
 var log #string

@@ -485,5 +485,27 @@ text = "Notifications:"
 [node name="Label2" type="Label" parent="CanvasLayer/Panel2/BoxContainer" unique_id=785136172]
 layout_mode = 2
 size_flags_vertical = 3
+autowrap_mode = 3
+
+[node name="Panel3" type="Panel" parent="CanvasLayer" unique_id=288541616]
+offset_left = 7.0
+offset_top = 575.0
+offset_right = 185.0
+offset_bottom = 617.0
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/Panel3" unique_id=1399773237]
+clip_contents = true
+layout_mode = 0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 181.0
+offset_bottom = 38.0
+vertical = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel3/BoxContainer" unique_id=1703137785]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Color: "
+vertical_alignment = 1
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

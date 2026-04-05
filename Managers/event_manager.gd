@@ -66,8 +66,8 @@ func handle_choice(event: String, choice: int):
 	StatsManager.requests+=1
 	match event:
 		"event_request_color":
-			if (StatsManager.coins<20):
-				StatsManager.log+="You did not have 20 coins for a dye job.\nYour line is upset by your false promises\n\n"
+			if (StatsManager.coins<20 and choice==0):
+				StatsManager.log+="You did not have 20 coins for a dye job. Your line is upset by your false promises\n\n"
 				StatsManager.affection-=5
 				choice=1
 			if (choice == 1):#no
@@ -84,8 +84,8 @@ func handle_choice(event: String, choice: int):
 					StatsManager.obedience-=10
 				return true
 		"event_request_money":
-			if(StatsManager.coins<StatsManager.requested_coins):
-				StatsManager.log+="You did not have the money you promised.\nYour line is disappointed and confused why you lied\n\n"
+			if(StatsManager.coins<StatsManager.requested_coins and choice==0):
+				StatsManager.log+="You did not have the money you promised. Your line is disappointed and confused why you lied\n\n"
 				StatsManager.affection-=5
 				choice=1
 			if (choice == 1):#no

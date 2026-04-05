@@ -15,6 +15,8 @@ func _process(delta):
 	if(len(StatsManager.log)>200):
 		StatsManager.log=""
 	
+	$Panel3/BoxContainer/Label.text="Color: "+StatsManager.Colour.find_key(StatsManager.colour)
+	
 	$BoxContainer/Label.text = "Coins: "+str(StatsManager.coins)
 	$BoxContainer/ProgressBar.value=StatsManager.affection
 	$BoxContainer/ProgressBar2.value=StatsManager.obedience
