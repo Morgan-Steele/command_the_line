@@ -16,6 +16,7 @@ func take_damage(amount: int, attack_roll: int) -> void:
 		print("Miss")
 
 func die():
+	StatsManager.combat_desc+="You won! Your opponent died!\n"
 	queue_free()
 
 func attack() -> int:

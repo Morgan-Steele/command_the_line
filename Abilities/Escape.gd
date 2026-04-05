@@ -13,5 +13,5 @@ func use(enemy):
 	else:
 		var damage=await enemy.attack()
 		StatsManager.health -= damage
-		StatsManager.combat_desc+="Line tried to escape, but was unsuccessful. You took "+str(damage)+"damage!"
+		StatsManager.combat_desc+="Line tried to escape, but was unsuccessful. You took "+str(damage)+" damage!"
 		base_escape += 5
