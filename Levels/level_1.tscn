@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://gbxr2njcy7l7"]
 
 [ext_resource type="PackedScene" uid="uid://bllxvslknralp" path="res://Sprites/player.tscn" id="1_rf6l5"]
-[ext_resource type="PackedScene" path="res://Enemies/Orc/orc.tscn" id="1_syshm"]
+[ext_resource type="PackedScene" uid="uid://c6btu54vson5x" path="res://Enemies/Orc/orc.tscn" id="1_syshm"]
 [ext_resource type="Texture2D" uid="uid://bdh8icav1d41u" path="res://Levels/tilesheet_complete.png" id="2_syshm"]
 [ext_resource type="Script" uid="uid://batggonssxop1" path="res://Levels/area_2d.gd" id="3_rfktq"]
 [ext_resource type="Script" uid="uid://d14ii4ds4tyxu" path="res://Levels/statsbar.gd" id="5_syshm"]
@@ -343,8 +343,10 @@ offset_bottom = 40.0
 
 [node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/Panel" unique_id=380374425]
 layout_mode = 1
-offset_right = 123.0
-offset_bottom = 85.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 133.0
+offset_bottom = 95.0
 vertical = true
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel/BoxContainer" unique_id=1010084757]
@@ -355,8 +357,22 @@ text = "Coins: "
 layout_mode = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_syshm")
 
+[node name="Label" type="Label" parent="CanvasLayer/Panel/BoxContainer/ProgressBar" unique_id=1824597476]
+layout_mode = 1
+offset_left = 130.0
+offset_right = 201.0
+offset_bottom = 23.0
+text = "Affection"
+
 [node name="ProgressBar2" type="ProgressBar" parent="CanvasLayer/Panel/BoxContainer" unique_id=1280970842]
 layout_mode = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_rfktq")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/BoxContainer/ProgressBar2" unique_id=637902777]
+layout_mode = 0
+offset_left = 130.0
+offset_right = 213.0
+offset_bottom = 23.0
+text = "Obedience"
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

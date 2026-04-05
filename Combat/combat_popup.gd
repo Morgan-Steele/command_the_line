@@ -5,6 +5,8 @@ func setup(enemy):
 	#$Panel/VBoxContainer/PlayerHealthLabel.text = "Your Health: " + str(StatsManager.health)
 
 func update_display():
+	$Label.text=StatsManager.combat_desc
+	StatsManager.combat_desc=""
 	if CombatManager.current_enemy:
 		$Panel/VBoxContainer/Label.text = "Enemy Health: " + str(CombatManager.current_enemy.health)
 	var player = get_tree().get_first_node_in_group("player")

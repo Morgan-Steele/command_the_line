@@ -12,3 +12,4 @@ func use(enemy):
 	var blocked = floor(StatsManager.abilities[1].skill/10) + randi_range(0, luck)
 	var damage = await enemy.attack()
 	StatsManager.health -= max(0, damage - blocked)
+	StatsManager.combat_desc=StatsManager.combat_desc+"Line blocked "+str(blocked)+" damage!\n"

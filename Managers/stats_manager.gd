@@ -4,6 +4,8 @@ enum Pattern {solid, dash, dotted, bold}
 enum Topper {none, ball, arrow, diamond}
 enum Colour {black, red, green, blue}
 
+var combat_desc #string
+
 var requests #int
 var denied #int
 var requested_color
@@ -33,9 +35,10 @@ func _ready():
 	requested_coins=0
 	requests=0
 	denied=0
+	combat_desc=""
 	
 	health=100
-	coins=0
+	coins=10
 	affection=20
 	obedience=20
 	
@@ -120,10 +123,15 @@ func use_ability(sel_ability, enemy):
 	#var succeed = true
 	if obey(sel_ability):
 		ability=sel_ability
+		combat_desc="Line did as you told it and used "+ability.title+"\n"
 		print(ability)
 	else:
 		print(ability)
+		combat_desc="Line didn't listen to you. Line used "+ability.title+" instead!\n"
 		ability=select()
 	if(succeed(enemy, ability)):
 		ability.use(enemy)
+		ability.skill=min(100, ability.skill+(floor(ability.aptitude/10)))
 		print(ability)
+	else:
+		combat_desc+="Line tried to use "+ability.title+" but failed :(\n"

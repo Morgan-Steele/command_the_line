@@ -3,10 +3,12 @@ class_name Healing
 var base_heal
 var luck
 
-func _init(t_name, t_skill, t_aptitude, t_like, bheal=-1, lucky=20):
+func _init(t_name, t_skill, t_aptitude, t_like, bheal=10, lucky=20):
 	super._init(t_name, t_skill, t_aptitude, t_like)
 	base_heal = bheal if bheal != -1 else t_skill / 5
 	luck = lucky
 
 func use(enemy):
-	StatsManager.health = min(StatsManager.max_health, StatsManager.health + base_heal + randi_range(0, luck))
+	var heal=base_heal + randi_range(0, luck)+floor(StatsManager.abilities[3].skill/10)
+	StatsManager.health = min(StatsManager.max_health, StatsManager.health+heal)
+	StatsManager.combat_desc+="Line healed you for "+str(heal)+"!\n"
