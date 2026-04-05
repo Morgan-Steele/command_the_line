@@ -28,6 +28,8 @@ var max_health = 100
 
 #Combat Variables
 var in_combat = false
+var is_alive = true
+var user_turn = true
 
 var abilities = []
 
@@ -49,7 +51,7 @@ func _ready():
 	pattern = randi_range(0, 3)
 	topper = randi_range(0, 2)
 	
-	#make abilities
+	# make abilities
 	abilities.append(Offensive.new("Sword", randf_range(0,50),randf_range(0,100),0))
 	abilities.append(Defensive.new("Shield", randf_range(0,50),randf_range(0,100),0))
 	abilities.append(Escape.new("Helicopter", randf_range(0,50),randf_range(0,100),0))

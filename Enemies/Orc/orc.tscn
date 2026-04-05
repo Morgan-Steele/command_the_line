@@ -10,15 +10,17 @@ resource_name = "Orc"
 script/source = "class_name Orc extends Enemy
 #Orc has a lot of health and deals a lot of damage, but takes a while to wind up attack
 @onready var _animated_sprite = $AnimatedSprite2D
-
+var is_dead = false
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		return
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	move_and_slide()
 
 func _ready() -> void:
 	health = 100
-	damage = 50
+	damage = 25
 	armor = 10
 	speed = 20
 	_animated_sprite.play(\"Idle\")
@@ -31,9 +33,10 @@ func take_damage(amount: int, attack_roll: int) -> void:
 			StatsManager.in_combat = false
 
 func die():
+	is_dead = true
 	print(\"Orc Dies\")
-	_animated_sprite.play(\"Death\")
-	await _animated_sprite.animation_finished
+	_animated_sprite.play(\"death\")
+	await get_tree().create_timer(1.5).timeout
 	print(\"Orc Dead\")
 	queue_free()
 	
@@ -41,15 +44,26 @@ func die():
 func attack() -> int:
 	print(\"Orc attacked\")
 	_animated_sprite.play(\"Attack\")
-	await _animated_sprite.animation_finished
+	await get_tree().create_timer(1.5).timeout
+	var actual_damage = 0
+	var offset = randi_range(-5,5)
+	actual_damage = damage + offset
 	_animated_sprite.play(\"Idle\")
-	return damage
+	StatsManager.combat_desc = \"Orc attacked, doing \" + str(actual_damage) + \" damage!\\n\"
+	return actual_damage
+
 func defend() -> int:
 	return armor
+	
+func heal() -> int:
+	var total_damage = 100 - health
+	var healthIncrease = total_damage * .1
+	health += healthIncrease
+	StatsManager.combat_desc = \"Orc healed a total of \" + str(healthIncrease) + \" points!\\n\"
+	return health
+	
 func unique_move() -> void:
-	print(\"Orc braces itself to take no damage!\")
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-
+	StatsManager.combat_desc = \"Orc fumbles and loses a full turn!\\n\"
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == \"Player\":
@@ -92,30 +106,6 @@ region = Rect2(64, 128, 64, 64)
 atlas = ExtResource("1_ja3qm")
 region = Rect2(0, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t1g8j"]
-atlas = ExtResource("2_rawev")
-region = Rect2(0, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dtfp8"]
-atlas = ExtResource("2_rawev")
-region = Rect2(64, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sofu2"]
-atlas = ExtResource("2_rawev")
-region = Rect2(128, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w1sc1"]
-atlas = ExtResource("2_rawev")
-region = Rect2(192, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_emy7t"]
-atlas = ExtResource("2_rawev")
-region = Rect2(256, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jxspg"]
-atlas = ExtResource("2_rawev")
-region = Rect2(320, 128, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_hgorl"]
 atlas = ExtResource("3_kbc5p")
 region = Rect2(0, 128, 64, 64)
@@ -156,6 +146,30 @@ region = Rect2(256, 128, 64, 64)
 atlas = ExtResource("4_edclf")
 region = Rect2(320, 128, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1g8j"]
+atlas = ExtResource("2_rawev")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtfp8"]
+atlas = ExtResource("2_rawev")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sofu2"]
+atlas = ExtResource("2_rawev")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1sc1"]
+atlas = ExtResource("2_rawev")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emy7t"]
+atlas = ExtResource("2_rawev")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxspg"]
+atlas = ExtResource("2_rawev")
+region = Rect2(320, 128, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_8lmbb"]
 animations = [{
 "frames": [{
@@ -185,29 +199,6 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t1g8j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dtfp8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sofu2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w1sc1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_emy7t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jxspg")
-}],
-"loop": false,
-"name": &"Dealth",
 "speed": 5.0
 }, {
 "frames": [{
@@ -249,6 +240,29 @@ animations = [{
 "loop": true,
 "name": &"Walk",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1g8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtfp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sofu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1sc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emy7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxspg")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hme68"]
@@ -264,9 +278,7 @@ shape = SubResource("RectangleShape2D_6ssb8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=907736130]
 process_mode = 3
 sprite_frames = SubResource("SpriteFrames_8lmbb")
-animation = &"Dealth"
-frame = 5
-frame_progress = 1.0
+animation = &"death"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=590384644]
 

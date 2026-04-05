@@ -46,12 +46,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Attack"
 
-[node name="defend_button" type="Button" parent="Panel/VBoxContainer" unique_id=538157225]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Defend"
-
 [node name="escape_button" type="Button" parent="Panel/VBoxContainer" unique_id=1570560340]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -63,6 +57,13 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Heal"
+
+[node name="TurnLabel" type="Label" parent="." unique_id=655057427]
+offset_left = 933.0
+offset_top = 915.0
+offset_right = 974.0
+offset_bottom = 938.0
+text = "Turn:"
 
 [node name="Label" type="Label" parent="." unique_id=789461669]
 anchors_preset = 7
@@ -79,6 +80,5 @@ grow_vertical = 0
 autowrap_mode = 3
 
 [connection signal="pressed" from="Panel/VBoxContainer/attack_button" to="." method="_on_attack_button_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/defend_button" to="." method="_on_defend_button_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/escape_button" to="." method="_on_escape_button_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/heal_button" to="." method="_on_heal_button_pressed"]
