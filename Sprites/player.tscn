@@ -40,6 +40,22 @@ region = Rect2(0, 0, 128, 128)
 atlas = ExtResource("3_7x6f1")
 region = Rect2(128, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x6f1"]
+atlas = ExtResource("4_tgxxa")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ky3o"]
+atlas = ExtResource("4_tgxxa")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwo2n"]
+atlas = ExtResource("4_tgxxa")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilwao"]
+atlas = ExtResource("4_tgxxa")
+region = Rect2(640, 0, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_tgxxa"]
 atlas = ExtResource("4_7x6f1")
 region = Rect2(0, 0, 128, 128)
@@ -218,6 +234,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_7x6f1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ky3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwo2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilwao")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_tgxxa")
 }, {
 "duration": 1.0,
@@ -228,7 +256,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"dying",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [],
 "loop": true,
@@ -355,14 +383,6 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_op7ga"]
 height = 74.0
 
-[sub_resource type="Animation" id="Animation_eksx6"]
-resource_name = "attack"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7x6f1"]
-_data = {
-&"attack": SubResource("Animation_eksx6")
-}
-
 [node name="Player" type="CharacterBody2D" unique_id=202545245 groups=["player"]]
 position = Vector2(-1, -28)
 script = ExtResource("1_onrkg")
@@ -371,7 +391,9 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=204282189 groups=["player"]]
 process_mode = 3
 sprite_frames = SubResource("SpriteFrames_u1c27")
-animation = &"heal"
+animation = &"dying"
+frame = 6
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=354912831 groups=["player"]]
 position = Vector2(0, 25)
@@ -381,6 +403,7 @@ shape = SubResource("CapsuleShape2D_op7ga")
 position_smoothing_enabled = true
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=129148707 groups=["player"]]
+process_mode = 3
 custom_minimum_size = Vector2(70, 15)
 offset_left = -32.0
 offset_top = -45.0
@@ -389,6 +412,3 @@ offset_bottom = -18.0
 theme_override_colors/font_color = Color(0.84313726, 0, 0.24705882, 1)
 value = 100.0
 metadata/_edit_use_anchors_ = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=470829721]
-libraries/ = SubResource("AnimationLibrary_7x6f1")

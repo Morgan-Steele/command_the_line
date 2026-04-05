@@ -46,10 +46,14 @@ func enemy_turn():
 	
 func check_combat_end():
 	if StatsManager.health <= 0:
-		print("Player died!")
+		print("Player dies")
+		var player = get_tree().get_first_node_in_group("player")
+		get_tree().paused = false
+		await player.die()
 		end_combat()
 	elif current_enemy == null or current_enemy.health <= 0:
-		print("Enemy defeated!")
+		print("orc dies")
+		current_enemy.die()
 		end_combat()
 	
 func end_combat():
