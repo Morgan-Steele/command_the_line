@@ -40,12 +40,12 @@ func select_event():
 	var chosen
 	while (true):
 		if(chooser<(60-(StatsManager.affection-50))):
-			chosen = events[randi() % bad_events.size()]
+			chosen = bad_events[randi() % bad_events.size()]
 			break
 		if(chooser<((60-(StatsManager.affection-50)))+60):
-			chosen = events[randi() % nuetral_events.size()]
+			chosen = nuetral_events[randi() % nuetral_events.size()]
 			break
-		chosen = events[randi() % good_events.size()]
+		chosen = good_events[randi() % good_events.size()]
 		break
 	
 	print("The chosen event is:")
