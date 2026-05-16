@@ -22,27 +22,30 @@ func update_display():
 
 func _on_attack_button_pressed() -> void:
 	print("Attack pressed")
-	var player = get_tree().get_first_node_in_group("player")
-	player.get_node("AnimatedSprite2D").play("attack")
-	await player.get_node("AnimatedSprite2D").animation_finished
 	CombatManager.player_turn("attack")
+	var player = get_tree().get_first_node_in_group("player")
+	#player.get_node("AnimatedSprite2D").play("attack")
+	player.get_node("AnimatedSprite2D").play(StatsManager.selected_ability)
+	await player.get_node("AnimatedSprite2D").animation_finished
 	update_display()
 	print("Attack Finished")
 
 
 func _on_escape_button_pressed() -> void:
 	print("Escape pressed")
+	CombatManager.player_turn("escape")
 	var player = get_tree().get_first_node_in_group("player")
-	player.get_node("AnimatedSprite2D").play("escape")
+	#player.get_node("AnimatedSprite2D").play("escape")
+	player.get_node("AnimatedSprite2D").play(StatsManager.selected_ability)
 	await get_tree().create_timer(0.5).timeout
 	await player.get_node("AnimatedSprite2D").animation_finished
-	CombatManager.player_turn("escape")
 	update_display()
 
 func _on_heal_button_pressed() -> void:
 	print("Heal pressed")
-	var player = get_tree().get_first_node_in_group("player")
-	player.get_node("AnimatedSprite2D").play("healing")
-	await player.get_node("AnimatedSprite2D").animation_finished
 	CombatManager.player_turn("healing")
+	var player = get_tree().get_first_node_in_group("player")
+	#player.get_node("AnimatedSprite2D").play("healing")
+	player.get_node("AnimatedSprite2D").play(StatsManager.selected_ability)
+	await player.get_node("AnimatedSprite2D").animation_finished
 	update_display()

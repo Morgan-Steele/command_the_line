@@ -32,6 +32,14 @@ var is_alive = true
 var user_turn = true
 
 var abilities = []
+var selected_ability #string
+var animate = {
+	"Sword"="attack",
+	"Helicopter"="escape",
+	"Magic Staff"="healing",
+	"Non Combat"="idle",
+	"Shield"="idle"
+}
 
 func _ready():
 	sabotage=false
@@ -110,6 +118,10 @@ func succeed(enemy, ability):
 	if(randi_range(0,99)>(2*affection)):#sabotage
 		sabotage=true
 		return false
+	#still working on this
+	if(ability.label=="Non Combat" or ability.label=="Shield"):
+		return false
+
 	if (ability is Offensive):
 		return enemy.armor > randi_range(0,90)+(ability.skill/2)
 	else:
@@ -131,16 +143,18 @@ func use_ability(sel_ability, enemy):
 		affection+=ability.like
 		combat_desc="Line did as you told it and used "+ability.label+"\n"
 		print("debug1")
-		print(ability)
+		print(ability.label)
+		selected_ability=animate[ability.label]
 	else:
 		print("debug2")
-		print(ability)
 		ability=abilities[select()]
+		print(ability.label)
+		selected_ability=animate[ability.label]
 		combat_desc="Line didn't listen to you. Line used "+ability.label+" instead!\n"
 	if(succeed(enemy, ability)):
 		ability.use(enemy)
 		ability.skill=min(100, ability.skill+(floor(ability.aptitude/5)))
-		print(ability)
+		print(ability.label)
 	else:
 		combat_desc+="Line tried to use "+ability.label+" but failed :(\n"
 		ability.skill=min(100, ability.skill+(floor(ability.aptitude/10)))
